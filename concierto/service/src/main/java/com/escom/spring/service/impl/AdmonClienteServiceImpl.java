@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +18,9 @@ import com.escom.spring.service.AdmonClienteService;
 
 @Service
 public class AdmonClienteServiceImpl implements AdmonClienteService {
+	
+	static Logger log = Logger.getLogger(AdmonClienteServiceImpl.class.getName());
+
 	
 	@Autowired
 	ClienteRepository clienteRepository;
@@ -63,5 +67,21 @@ public class AdmonClienteServiceImpl implements AdmonClienteService {
 			returnList.add(iter.next());
 		}
 		return returnList;
+	}
+
+
+	@Override
+	public boolean validateTicketsBuy(Concierto concierto, Cliente cliente, int numeroBoletos) {
+		List<Cliente> listaClientes = concierto.getClientes();
+		int counter = 0;
+		for (Cliente itCliente: listaClientes) {
+			if (itCliente.getIdCliente() == cliente.getIdCliente()) {
+				counter ++;
+			}
+		}
+		log.info("El número de compras para ese cliente es: " + counter);
+		log.info("El nuevo número de boletos a comprar son: " + numeroBoletos);
+		log.info("El resultado es " + (counter + numeroBoletos));
+		return counter + numeroBoletos > 5 ;
 	}
 }

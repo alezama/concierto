@@ -52,59 +52,94 @@ public class CompraController {
 		return "NewCompraFormStart";
 	}
 
-	
-	
+
+
 	@RequestMapping(method=RequestMethod.POST, value="/processCompraFirstSearch") 
 	public String processFirstSearch (Map<String, Object> model,
 			@ModelAttribute("formCompra") Compra compra, 
 			HttpServletRequest request ) {
+		/* Se borran los atributos de sesion que se pudieron setear durante un error
+		*  en el método processFinish (...) */
+		request.getSession().removeAttribute("idLugar");
+		request.getSession().removeAttribute("idBanda");
 		
 		List<Concierto> conciertoList  = null;
 		if (compra.getIdBanda() != null) {
 			Banda banda = admonBandaService.findBandaById(compra.getIdBanda());
 			conciertoList = admonConcieroService.getConciertosByBanda(banda);
+			request.getSession().setAttribute("idBanda", banda.getIdBanda());
 			request.getSession().setAttribute("nombreBanda",banda.getNombre());
 		}else if (compra.getIdLugar() != null) {
 			Lugar lugar = admonLugarService.findLugarById(compra.getIdLugar());
 			conciertoList = admonConcieroService.getConciertosByLugar(lugar);
+			request.getSession().setAttribute("idLugar", lugar.getIdLugar());
 			request.getSession().setAttribute("nombreLugar",lugar.getNombre());
 		}
 		if (conciertoList != null &&conciertoList.size() > 0 ){
 			model.put("listaConciertos", 
 					conciertoList);
-			
+
 		} else {
 			model.put("errorMessage", "No hay conciertos para el criterio de búsqueda" );
-			return "NewCompraFormFirstSearch";
+			compra.setIdCliente((Integer) request.getSession().getAttribute("idCliente"));
+			compra.setSeleccionCompra((Integer) request.getSession().getAttribute("seleccionCompra"));
+
+			return processStart( model, compra, request);
 		}
-		
+
 		return "NewCompraSecondSearch";
 	}
-		
+
 	@RequestMapping(method=RequestMethod.POST, value="/processCompraFinish")
 	public String processFinish (Map<String,Object> model, 
 			@ModelAttribute("formCompra") Compra compra, 
 			HttpServletRequest request){
+
+		if (compra.getIdConcierto() == null ) {
+			model.put("errorMessage", "Debes de seleccionar un concierto." );
+			compra.setIdConcierto((Integer) request.getSession().getAttribute("idLugar"));
+			compra.setIdBanda((Integer) request.getSession().getAttribute("idBanda"));
+			return processFirstSearch (model, compra, request);
+		}
 		
 		Concierto concierto = admonConcieroService.findById(compra.getIdConcierto());
 		log.info("El valor del ID del cliente es: " +  request.getSession().getAttribute("idCliente"));
 		Cliente cliente = admonClienteService.getClienteById((Integer) request.getSession().getAttribute("idCliente"));
-		admonClienteService.addClienteToConcierto(concierto, cliente);
+		int numeroBoletos = compra.getNumeroBoletos();
+		if (!admonClienteService.validateTicketsBuy(concierto, cliente, numeroBoletos)) {
+			for (int i = 0 ; i < numeroBoletos; i++) {
+				admonClienteService.addClienteToConcierto(concierto, cliente);
+			}
+			model.put("objectId", compra.getNumeroBoletos() + " boletos han sido comprados para el concierto seleccionado");
+			return "SuccessRegisterRecord";
+		} else {
+			model.put("errorMessage", "El número de boletos excede el máximo permitido." );
+			compra.setIdConcierto((Integer) request.getSession().getAttribute("idLugar"));
+			compra.setIdBanda((Integer) request.getSession().getAttribute("idBanda"));
+			return processFirstSearch (model, compra, request);
 
+		}
 
-         model.put("objectId", compra.getNumeroBoletos() + " boletos han sido comprados para el concierto seleccionado");
-         return "SuccessRegisterRecord";
 	}
-	
+
 	@RequestMapping(method=RequestMethod.POST, value="/processCompraStart")
 	public String processStart(Map<String, Object> model,
 			@ModelAttribute("formCompra") Compra compra, 
 			HttpServletRequest request) {
+
+		/*
+		 * Limpio los atributos que se pudieron setear en un paso anterior
+		 */
+		request.getSession().removeAttribute("idBanda");
+		request.getSession().removeAttribute("nombreBanda");
+		request.getSession().removeAttribute("idLugar");
+		request.getSession().removeAttribute("nombreLugar");
 		
 		Cliente cliente = admonClienteService.getClienteById(compra.getIdCliente());
 		log.info("El valor del ID del cliente es: " +  cliente.getIdCliente());
 		request.getSession().setAttribute("idCliente",cliente.getIdCliente());
 		request.getSession().setAttribute("nombreCliente",cliente.getNombre());
+		request.getSession().setAttribute("seleccionCompra",compra.getSeleccionCompra());
 		
 		if(compra.getSeleccionCompra() == 0) {
 			List<Lugar> lugarList = admonLugarService.findAllLugares();
@@ -121,16 +156,16 @@ public class CompraController {
 		else if (compra.getSeleccionCompra() == 1){
 			List<Banda> bandaList = admonBandaService.findAllBandas();
 			if (bandaList.size()>0) {
-			model.put("listBandas",bandaList);
-			model.put("selectBanda", "selected=selected");
+				model.put("listBandas",bandaList);
+				model.put("selectBanda", "selected=selected");
 			} else {
 				model.put("errorMessage", "No se han dado de alta bandas para conciertos" );
 				return  requestNewConcierto(model);
 			}
 		}
-		
+
 		return "NewCompraFormFirstSearch";
-		
+
 	}
 
 

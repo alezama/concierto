@@ -38,6 +38,9 @@
 						path="numeroBoletos" id="numeroBoletos" /></li>
 				<li><input type="submit" value="Comprar"></li>
 			</form:form>
+			<c:if test="${not empty errorMessage}">
+				<li><c:out value="${errorMessage}"></c:out></li>
+			</c:if>
 		</ul>
 	</span>
 </body>
