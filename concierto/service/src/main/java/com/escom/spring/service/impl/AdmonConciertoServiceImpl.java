@@ -1,8 +1,12 @@
 package com.escom.spring.service.impl;
 
 import java.rmi.ServerException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +14,7 @@ import org.springframework.stereotype.Service;
 import com.escom.spring.entity.Banda;
 import com.escom.spring.entity.Cliente;
 import com.escom.spring.entity.Concierto;
+import com.escom.spring.entity.Genero;
 import com.escom.spring.entity.Lugar;
 import com.escom.spring.repository.ConciertoRepository;
 import com.escom.spring.service.AdmonConciertoService;
@@ -35,10 +40,29 @@ public class AdmonConciertoServiceImpl implements AdmonConciertoService  {
 		return conciertoRepository.findByLugar(lugar);
 	}
 	
+	public List<Concierto> findAllConciertos () {
+		Iterable<Concierto> itG= conciertoRepository.findAll();
+		List<Concierto> returnList = new ArrayList<Concierto>();
+		Iterator<Concierto> iter = itG.iterator();
+		while (iter.hasNext()){
+			returnList.add(iter.next());
+		}
+		return returnList;
+	}
+	
+	public Concierto findById (Integer id) {
+		Concierto concierto = conciertoRepository.findOne(id);
+		concierto.getClientes();
+		return concierto;
+	}
+	
 	/* (non-Javadoc)
 	 * @see com.escom.spring.service.impl.AdmonConciertoService#addConcierto(com.escom.spring.entity.Concierto)
 	 */
 	public void addConcierto (Concierto concierto){
+		if (concierto.getClientes()==null) {
+			concierto.setClientes(new ArrayList<Cliente>());
+		}
 		conciertoRepository.save(concierto);
 	}
 	

@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import java.util.List;
 
@@ -17,15 +21,24 @@ import java.util.List;
 public class Concierto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@Override
+	public String toString() {
+		return "Concierto de la banda= " + banda.getNombre() +" que se presentará el día " + fecha
+				+ " en " + lugar.getNombre();
+	}
+
 	@Id
 	@Column(name="id_concierto")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idConcierto;
 
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Date fecha;
 
 	//bi-directional many-to-many association to Cliente
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany
+	@Fetch(FetchMode.JOIN)
 	@JoinTable(
 		name="compra"
 		, joinColumns={
@@ -90,4 +103,9 @@ public class Concierto implements Serializable {
 		this.lugar = lugar;
 	}
 
+	public void addCliente (Cliente cliente){
+		List<Cliente> listaClientes = this.getClientes();
+		listaClientes.add(cliente);
+		this.setClientes(listaClientes);
+	}
 }

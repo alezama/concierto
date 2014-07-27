@@ -35,4 +35,8 @@ public class AdmonGeneroServiceImpl implements AdmonGeneroService {
 		return returnList;
 	}
 	
+	public Genero getGeneroById (Integer id) {
+		return generoRepository.findOne(id);
+	}
+	
 }

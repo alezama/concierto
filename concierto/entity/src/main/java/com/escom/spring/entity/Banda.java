@@ -18,6 +18,7 @@ public class Banda implements Serializable {
 
 	@Id
 	@Column(name="id_banda")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idBanda;
 
 	private String nombre;
@@ -25,7 +26,7 @@ public class Banda implements Serializable {
 	private int ranking;
 
 	//bi-directional many-to-one association to Genero
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="id_genero")
 	private Genero genero;
 

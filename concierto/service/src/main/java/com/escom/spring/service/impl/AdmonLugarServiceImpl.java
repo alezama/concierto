@@ -1,5 +1,9 @@
 package com.escom.spring.service.impl;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +25,19 @@ public class AdmonLugarServiceImpl implements AdmonLugarService {
 		lugarRepository.save(lugar);
 	}
 	
+	public List<Lugar> findAllLugares () {
+		Iterable<Lugar> itG= lugarRepository.findAll();
+		List<Lugar> returnList = new ArrayList<Lugar>();
+		Iterator<Lugar> iter = itG.iterator();
+		while (iter.hasNext()){
+			returnList.add(iter.next());
+		}
+		
+		return returnList;
+	}
+	
+	public Lugar findLugarById (Integer id) {
+		return lugarRepository.findOne(id);
+	}
 	
 }

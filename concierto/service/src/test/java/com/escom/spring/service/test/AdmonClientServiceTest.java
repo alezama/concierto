@@ -45,8 +45,8 @@ public class AdmonClientServiceTest {
 	
 	@Test
 	public void testFindCliente() {
-		Cliente cliente = admonClienteService.getClienteById(1);
-		Cliente result = clienteRepository.findOne(1);
+		Cliente cliente = admonClienteService.getClienteById(0);
+		Cliente result = clienteRepository.findOne(0);
 		assertNotNull("El cliente retornado por el servicio es nulo", cliente);
 		assertNotNull("El cliente retornado por el repositorio es nulo", result);
 		assertEquals("Los clientes regresados no son los mismos", cliente.getIdCliente(), result.getIdCliente());

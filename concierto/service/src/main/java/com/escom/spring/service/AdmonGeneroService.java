@@ -8,5 +8,5 @@ public interface AdmonGeneroService {
 
 	public abstract void addGenero(Genero genero);
 	public abstract List<Genero> findAllGeneros ();
-	
+	public abstract Genero getGeneroById (Integer id);
 }

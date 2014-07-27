@@ -23,4 +23,7 @@ public interface AdmonConciertoService {
 	public abstract Concierto createConcierto(Banda banda, Lugar lugar,
 			Date fecha) throws ServerException;
 
+	public abstract  List<Concierto> findAllConciertos ();
+	
+	public abstract Concierto findById (Integer id);
 }

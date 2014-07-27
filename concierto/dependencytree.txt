@@ -1,0 +1,434 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.escom.spring:entity:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ com.escom.spring:concierto:0.0.1-SNAPSHOT, C:\Users\anuarlb\gitRepo\concierto\pom.xml, line 37, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.escom.spring:repository:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ com.escom.spring:concierto:0.0.1-SNAPSHOT, C:\Users\anuarlb\gitRepo\concierto\pom.xml, line 37, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.escom.spring:service:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ com.escom.spring:concierto:0.0.1-SNAPSHOT, C:\Users\anuarlb\gitRepo\concierto\pom.xml, line 37, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.escom.spring:web:war:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ com.escom.spring:concierto:0.0.1-SNAPSHOT, C:\Users\anuarlb\gitRepo\concierto\pom.xml, line 37, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.escom.spring:concierto:pom:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ line 37, column 12
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Concierto
+[INFO] entity
+[INFO] repository
+[INFO] service
+[INFO] web Maven Webapp
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Concierto 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.1:tree (default-cli) @ concierto ---
+[INFO] com.escom.spring:concierto:pom:0.0.1-SNAPSHOT
+[INFO] +- org.springframework:spring-core:jar:4.0.2.RELEASE:compile
+[INFO] |  \- commons-logging:commons-logging:jar:1.1.3:compile
+[INFO] +- org.springframework:spring-beans:jar:4.0.2.RELEASE:compile
+[INFO] |  \- (org.springframework:spring-core:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] +- org.springframework:spring-context:jar:4.0.2.RELEASE:compile
+[INFO] |  +- (org.springframework:spring-beans:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  +- (org.springframework:spring-core:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  \- org.springframework:spring-expression:jar:4.0.2.RELEASE:compile
+[INFO] |     \- (org.springframework:spring-core:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] +- org.springframework:spring-test:jar:4.0.2.RELEASE:test
+[INFO] |  \- (org.springframework:spring-core:jar:4.0.2.RELEASE:test - omitted for duplicate)
+[INFO] +- junit:junit:jar:4.8.1:test
+[INFO] +- org.apache.commons:commons-lang3:jar:3.0:compile
+[INFO] +- org.slf4j:slf4j-api:jar:1.5.2:compile
+[INFO] +- org.slf4j:jcl-over-slf4j:jar:1.5.2:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.5.2:compile
+[INFO] |  +- (org.slf4j:slf4j-api:jar:1.5.2:compile - omitted for duplicate)
+[INFO] |  \- (log4j:log4j:jar:1.2.14:compile - omitted for conflict with 1.2.16)
+[INFO] \- log4j:log4j:jar:1.2.16:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building entity 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.1:tree (default-cli) @ entity ---
+[INFO] com.escom.spring:entity:jar:0.0.1-SNAPSHOT
+[INFO] +- org.springframework.data:spring-data-jpa:jar:1.3.4.RELEASE:compile
+[INFO] |  +- org.springframework.data:spring-data-commons:jar:1.5.2.RELEASE:compile
+[INFO] |  |  +- (org.springframework:spring-core:jar:3.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  +- (org.springframework:spring-beans:jar:3.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  +- (org.slf4j:slf4j-api:jar:1.7.1:compile - omitted for duplicate)
+[INFO] |  |  \- (org.slf4j:jcl-over-slf4j:jar:1.7.1:runtime - omitted for duplicate)
+[INFO] |  +- org.springframework:spring-orm:jar:3.1.4.RELEASE:compile
+[INFO] |  |  +- (org.springframework:spring-beans:jar:3.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  +- (org.springframework:spring-core:jar:3.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  +- org.springframework:spring-jdbc:jar:3.1.4.RELEASE:compile
+[INFO] |  |  |  +- (org.springframework:spring-beans:jar:3.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |  +- (org.springframework:spring-core:jar:3.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |  \- (org.springframework:spring-tx:jar:3.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  \- (org.springframework:spring-tx:jar:3.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |  +- (org.springframework:spring-context:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.2.RELEASE)
+[INFO] |  +- org.springframework:spring-aop:jar:3.1.4.RELEASE:compile
+[INFO] |  |  +- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  |  +- (org.springframework:spring-asm:jar:3.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  +- (org.springframework:spring-beans:jar:3.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  \- (org.springframework:spring-core:jar:3.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |  +- org.springframework:spring-tx:jar:3.1.4.RELEASE:compile
+[INFO] |  |  +- (aopalliance:aopalliance:jar:1.0:compile - omitted for duplicate)
+[INFO] |  |  +- (org.springframework:spring-aop:jar:3.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  +- (org.springframework:spring-beans:jar:3.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  +- (org.springframework:spring-context:jar:3.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  \- (org.springframework:spring-core:jar:3.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |  +- (org.springframework:spring-beans:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.2.RELEASE)
+[INFO] |  +- (org.springframework:spring-core:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.2.RELEASE)
+[INFO] |  +- org.aspectj:aspectjrt:jar:1.7.2:compile
+[INFO] |  +- (org.slf4j:slf4j-api:jar:1.7.1:compile - omitted for conflict with 1.5.2)
+[INFO] |  \- (org.slf4j:jcl-over-slf4j:jar:1.7.1:runtime - omitted for conflict with 1.5.2)
+[INFO] +- org.hibernate:hibernate-entitymanager:jar:4.2.5.Final:compile
+[INFO] |  +- org.jboss.logging:jboss-logging:jar:3.1.0.GA:compile
+[INFO] |  +- dom4j:dom4j:jar:1.6.1:compile
+[INFO] |  +- org.hibernate:hibernate-core:jar:4.2.5.Final:compile
+[INFO] |  |  +- antlr:antlr:jar:2.7.7:compile
+[INFO] |  |  +- (org.jboss.logging:jboss-logging:jar:3.1.0.GA:compile - omitted for duplicate)
+[INFO] |  |  +- (dom4j:dom4j:jar:1.6.1:compile - omitted for duplicate)
+[INFO] |  |  +- (org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:jar:1.0.1.Final:compile - omitted for duplicate)
+[INFO] |  |  +- (org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final:compile - omitted for duplicate)
+[INFO] |  |  +- (org.hibernate.common:hibernate-commons-annotations:jar:4.0.2.Final:compile - omitted for duplicate)
+[INFO] |  |  \- (org.javassist:javassist:jar:3.15.0-GA:compile - omitted for duplicate)
+[INFO] |  +- org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:jar:1.0.1.Final:compile
+[INFO] |  +- org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final:compile
+[INFO] |  +- org.hibernate.common:hibernate-commons-annotations:jar:4.0.2.Final:compile
+[INFO] |  |  \- (org.jboss.logging:jboss-logging:jar:3.1.0.CR2:compile - omitted for conflict with 3.1.0.GA)
+[INFO] |  \- org.javassist:javassist:jar:3.15.0-GA:compile
+[INFO] +- javax.validation:validation-api:jar:1.1.0.Final:compile
+[INFO] +- org.hibernate:hibernate-validator:jar:5.0.3.Final:compile
+[INFO] |  +- (javax.validation:validation-api:jar:1.1.0.Final:compile - omitted for duplicate)
+[INFO] |  +- (org.jboss.logging:jboss-logging:jar:3.1.1.GA:compile - omitted for conflict with 3.1.0.GA)
+[INFO] |  \- com.fasterxml:classmate:jar:1.0.0:compile
+[INFO] +- org.springframework:spring-core:jar:4.0.2.RELEASE:compile
+[INFO] |  \- commons-logging:commons-logging:jar:1.1.3:compile
+[INFO] +- org.springframework:spring-beans:jar:4.0.2.RELEASE:compile
+[INFO] |  \- (org.springframework:spring-core:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] +- org.springframework:spring-context:jar:4.0.2.RELEASE:compile
+[INFO] |  +- (org.springframework:spring-beans:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  +- (org.springframework:spring-core:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  \- org.springframework:spring-expression:jar:4.0.2.RELEASE:compile
+[INFO] |     \- (org.springframework:spring-core:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] +- org.springframework:spring-test:jar:4.0.2.RELEASE:test
+[INFO] |  \- (org.springframework:spring-core:jar:4.0.2.RELEASE:test - omitted for duplicate)
+[INFO] +- junit:junit:jar:4.8.1:test
+[INFO] +- org.apache.commons:commons-lang3:jar:3.0:compile
+[INFO] +- org.slf4j:slf4j-api:jar:1.5.2:compile
+[INFO] +- org.slf4j:jcl-over-slf4j:jar:1.5.2:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.5.2:compile
+[INFO] |  +- (org.slf4j:slf4j-api:jar:1.5.2:compile - omitted for duplicate)
+[INFO] |  \- (log4j:log4j:jar:1.2.14:compile - omitted for conflict with 1.2.16)
+[INFO] \- log4j:log4j:jar:1.2.16:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building repository 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.1:tree (default-cli) @ repository ---
+[INFO] com.escom.spring:repository:jar:0.0.1-SNAPSHOT
+[INFO] +- org.springframework:spring-jdbc:jar:4.0.2.RELEASE:compile
+[INFO] |  +- (org.springframework:spring-beans:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  \- (org.springframework:spring-core:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] +- org.postgresql:postgresql:jar:9.3-1101-jdbc41:compile
+[INFO] +- com.escom.spring:entity:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- org.springframework.data:spring-data-jpa:jar:1.3.4.RELEASE:compile
+[INFO] |  |  +- org.springframework.data:spring-data-commons:jar:1.5.2.RELEASE:compile
+[INFO] |  |  |  +- (org.springframework:spring-core:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.2.RELEASE)
+[INFO] |  |  |  +- (org.springframework:spring-beans:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.2.RELEASE)
+[INFO] |  |  |  +- (org.slf4j:slf4j-api:jar:1.7.1:compile - omitted for duplicate)
+[INFO] |  |  |  \- (org.slf4j:jcl-over-slf4j:jar:1.7.1:runtime - omitted for duplicate)
+[INFO] |  |  +- org.springframework:spring-orm:jar:3.1.4.RELEASE:compile
+[INFO] |  |  |  +- (org.springframework:spring-beans:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.2.RELEASE)
+[INFO] |  |  |  +- (org.springframework:spring-core:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.2.RELEASE)
+[INFO] |  |  |  \- (org.springframework:spring-jdbc:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.2.RELEASE)
+[INFO] |  |  +- (org.springframework:spring-context:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.2.RELEASE)
+[INFO] |  |  +- (org.springframework:spring-beans:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.2.RELEASE)
+[INFO] |  |  +- (org.springframework:spring-core:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.2.RELEASE)
+[INFO] |  |  +- org.aspectj:aspectjrt:jar:1.7.2:compile
+[INFO] |  |  +- (org.slf4j:slf4j-api:jar:1.7.1:compile - omitted for conflict with 1.5.2)
+[INFO] |  |  \- (org.slf4j:jcl-over-slf4j:jar:1.7.1:runtime - omitted for conflict with 1.5.2)
+[INFO] |  +- org.hibernate:hibernate-entitymanager:jar:4.2.5.Final:compile
+[INFO] |  |  +- org.jboss.logging:jboss-logging:jar:3.1.0.GA:compile
+[INFO] |  |  +- dom4j:dom4j:jar:1.6.1:compile
+[INFO] |  |  +- org.hibernate:hibernate-core:jar:4.2.5.Final:compile
+[INFO] |  |  |  +- antlr:antlr:jar:2.7.7:compile
+[INFO] |  |  |  +- (org.jboss.logging:jboss-logging:jar:3.1.0.GA:compile - omitted for duplicate)
+[INFO] |  |  |  +- (dom4j:dom4j:jar:1.6.1:compile - omitted for duplicate)
+[INFO] |  |  |  +- (org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:jar:1.0.1.Final:compile - omitted for duplicate)
+[INFO] |  |  |  +- (org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final:compile - omitted for duplicate)
+[INFO] |  |  |  +- (org.hibernate.common:hibernate-commons-annotations:jar:4.0.2.Final:compile - omitted for duplicate)
+[INFO] |  |  |  \- (org.javassist:javassist:jar:3.15.0-GA:compile - omitted for duplicate)
+[INFO] |  |  +- org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:jar:1.0.1.Final:compile
+[INFO] |  |  +- org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final:compile
+[INFO] |  |  +- org.hibernate.common:hibernate-commons-annotations:jar:4.0.2.Final:compile
+[INFO] |  |  |  \- (org.jboss.logging:jboss-logging:jar:3.1.0.CR2:compile - omitted for conflict with 3.1.0.GA)
+[INFO] |  |  \- org.javassist:javassist:jar:3.15.0-GA:compile
+[INFO] |  +- javax.validation:validation-api:jar:1.1.0.Final:compile
+[INFO] |  +- org.hibernate:hibernate-validator:jar:5.0.3.Final:compile
+[INFO] |  |  +- (javax.validation:validation-api:jar:1.1.0.Final:compile - omitted for duplicate)
+[INFO] |  |  +- (org.jboss.logging:jboss-logging:jar:3.1.1.GA:compile - omitted for conflict with 3.1.0.GA)
+[INFO] |  |  \- com.fasterxml:classmate:jar:1.0.0:compile
+[INFO] |  +- (org.springframework:spring-core:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  +- (org.springframework:spring-beans:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  +- (org.springframework:spring-context:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  +- (org.apache.commons:commons-lang3:jar:3.0:compile - omitted for duplicate)
+[INFO] |  +- (org.slf4j:slf4j-api:jar:1.5.2:compile - omitted for duplicate)
+[INFO] |  +- (org.slf4j:jcl-over-slf4j:jar:1.5.2:compile - omitted for duplicate)
+[INFO] |  +- (org.slf4j:slf4j-log4j12:jar:1.5.2:compile - omitted for duplicate)
+[INFO] |  \- (log4j:log4j:jar:1.2.16:compile - omitted for duplicate)
+[INFO] +- org.neo4j:neo4j-cypher-compiler-2.1:jar:2.1.2:compile
+[INFO] |  +- org.parboiled:parboiled-scala_2.10:jar:1.1.6:compile
+[INFO] |  |  \- org.parboiled:parboiled-core:jar:1.1.6:compile
+[INFO] |  +- net.sf.opencsv:opencsv:jar:2.3:compile
+[INFO] |  \- org.scala-lang:scala-library:jar:2.10.4:compile
+[INFO] +- org.springframework:spring-core:jar:4.0.2.RELEASE:compile
+[INFO] |  \- commons-logging:commons-logging:jar:1.1.3:compile
+[INFO] +- org.springframework:spring-beans:jar:4.0.2.RELEASE:compile
+[INFO] |  \- (org.springframework:spring-core:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] +- org.springframework:spring-context:jar:4.0.2.RELEASE:compile
+[INFO] |  +- (org.springframework:spring-beans:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  +- (org.springframework:spring-core:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  \- org.springframework:spring-expression:jar:4.0.2.RELEASE:compile
+[INFO] |     \- (org.springframework:spring-core:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] +- org.springframework:spring-test:jar:4.0.2.RELEASE:test
+[INFO] |  \- (org.springframework:spring-core:jar:4.0.2.RELEASE:test - omitted for duplicate)
+[INFO] +- junit:junit:jar:4.8.1:test
+[INFO] +- org.apache.commons:commons-lang3:jar:3.0:compile
+[INFO] +- org.slf4j:slf4j-api:jar:1.5.2:compile
+[INFO] +- org.slf4j:jcl-over-slf4j:jar:1.5.2:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.5.2:compile
+[INFO] |  +- (org.slf4j:slf4j-api:jar:1.5.2:compile - omitted for duplicate)
+[INFO] |  \- (log4j:log4j:jar:1.2.14:compile - omitted for conflict with 1.2.16)
+[INFO] \- log4j:log4j:jar:1.2.16:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building service 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.1:tree (default-cli) @ service ---
+[INFO] com.escom.spring:service:jar:0.0.1-SNAPSHOT
+[INFO] +- com.escom.spring:repository:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-jdbc:jar:4.0.2.RELEASE:compile
+[INFO] |  |  +- (org.springframework:spring-beans:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  \- (org.springframework:spring-core:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  +- org.postgresql:postgresql:jar:9.3-1101-jdbc41:compile
+[INFO] |  +- com.escom.spring:entity:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |  +- org.springframework.data:spring-data-jpa:jar:1.3.4.RELEASE:compile
+[INFO] |  |  |  +- org.springframework.data:spring-data-commons:jar:1.5.2.RELEASE:compile
+[INFO] |  |  |  |  +- (org.springframework:spring-core:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.2.RELEASE)
+[INFO] |  |  |  |  +- (org.springframework:spring-beans:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.2.RELEASE)
+[INFO] |  |  |  |  +- (org.slf4j:slf4j-api:jar:1.7.1:compile - omitted for duplicate)
+[INFO] |  |  |  |  \- (org.slf4j:jcl-over-slf4j:jar:1.7.1:runtime - omitted for duplicate)
+[INFO] |  |  |  +- org.springframework:spring-orm:jar:3.1.4.RELEASE:compile
+[INFO] |  |  |  |  +- (org.springframework:spring-beans:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.2.RELEASE)
+[INFO] |  |  |  |  +- (org.springframework:spring-core:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.2.RELEASE)
+[INFO] |  |  |  |  \- (org.springframework:spring-jdbc:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.2.RELEASE)
+[INFO] |  |  |  +- (org.springframework:spring-context:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.2.RELEASE)
+[INFO] |  |  |  +- (org.springframework:spring-beans:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.2.RELEASE)
+[INFO] |  |  |  +- (org.springframework:spring-core:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.2.RELEASE)
+[INFO] |  |  |  +- org.aspectj:aspectjrt:jar:1.7.2:compile
+[INFO] |  |  |  +- (org.slf4j:slf4j-api:jar:1.7.1:compile - omitted for conflict with 1.5.2)
+[INFO] |  |  |  \- (org.slf4j:jcl-over-slf4j:jar:1.7.1:runtime - omitted for conflict with 1.5.2)
+[INFO] |  |  +- org.hibernate:hibernate-entitymanager:jar:4.2.5.Final:compile
+[INFO] |  |  |  +- org.jboss.logging:jboss-logging:jar:3.1.0.GA:compile
+[INFO] |  |  |  +- dom4j:dom4j:jar:1.6.1:compile
+[INFO] |  |  |  +- org.hibernate:hibernate-core:jar:4.2.5.Final:compile
+[INFO] |  |  |  |  +- antlr:antlr:jar:2.7.7:compile
+[INFO] |  |  |  |  +- (org.jboss.logging:jboss-logging:jar:3.1.0.GA:compile - omitted for duplicate)
+[INFO] |  |  |  |  +- (dom4j:dom4j:jar:1.6.1:compile - omitted for duplicate)
+[INFO] |  |  |  |  +- (org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:jar:1.0.1.Final:compile - omitted for duplicate)
+[INFO] |  |  |  |  +- (org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final:compile - omitted for duplicate)
+[INFO] |  |  |  |  +- (org.hibernate.common:hibernate-commons-annotations:jar:4.0.2.Final:compile - omitted for duplicate)
+[INFO] |  |  |  |  \- (org.javassist:javassist:jar:3.15.0-GA:compile - omitted for duplicate)
+[INFO] |  |  |  +- org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:jar:1.0.1.Final:compile
+[INFO] |  |  |  +- org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final:compile
+[INFO] |  |  |  +- org.hibernate.common:hibernate-commons-annotations:jar:4.0.2.Final:compile
+[INFO] |  |  |  |  \- (org.jboss.logging:jboss-logging:jar:3.1.0.CR2:compile - omitted for conflict with 3.1.0.GA)
+[INFO] |  |  |  \- org.javassist:javassist:jar:3.15.0-GA:compile
+[INFO] |  |  +- javax.validation:validation-api:jar:1.1.0.Final:compile
+[INFO] |  |  +- org.hibernate:hibernate-validator:jar:5.0.3.Final:compile
+[INFO] |  |  |  +- (javax.validation:validation-api:jar:1.1.0.Final:compile - omitted for duplicate)
+[INFO] |  |  |  +- (org.jboss.logging:jboss-logging:jar:3.1.1.GA:compile - omitted for conflict with 3.1.0.GA)
+[INFO] |  |  |  \- com.fasterxml:classmate:jar:1.0.0:compile
+[INFO] |  |  +- (org.springframework:spring-core:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  +- (org.springframework:spring-beans:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  +- (org.springframework:spring-context:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  +- (org.apache.commons:commons-lang3:jar:3.0:compile - omitted for duplicate)
+[INFO] |  |  +- (org.slf4j:slf4j-api:jar:1.5.2:compile - omitted for duplicate)
+[INFO] |  |  +- (org.slf4j:jcl-over-slf4j:jar:1.5.2:compile - omitted for duplicate)
+[INFO] |  |  +- (org.slf4j:slf4j-log4j12:jar:1.5.2:compile - omitted for duplicate)
+[INFO] |  |  \- (log4j:log4j:jar:1.2.16:compile - omitted for duplicate)
+[INFO] |  +- (org.neo4j:neo4j-cypher-compiler-2.1:jar:2.1.2:compile - omitted for duplicate)
+[INFO] |  +- (org.springframework:spring-core:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  +- (org.springframework:spring-beans:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  +- (org.springframework:spring-context:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  +- (org.apache.commons:commons-lang3:jar:3.0:compile - omitted for duplicate)
+[INFO] |  +- (org.slf4j:slf4j-api:jar:1.5.2:compile - omitted for duplicate)
+[INFO] |  +- (org.slf4j:jcl-over-slf4j:jar:1.5.2:compile - omitted for duplicate)
+[INFO] |  +- (org.slf4j:slf4j-log4j12:jar:1.5.2:compile - omitted for duplicate)
+[INFO] |  \- (log4j:log4j:jar:1.2.16:compile - omitted for duplicate)
+[INFO] +- org.neo4j:neo4j-cypher-compiler-2.1:jar:2.1.2:compile
+[INFO] |  +- org.parboiled:parboiled-scala_2.10:jar:1.1.6:compile
+[INFO] |  |  \- org.parboiled:parboiled-core:jar:1.1.6:compile
+[INFO] |  +- net.sf.opencsv:opencsv:jar:2.3:compile
+[INFO] |  \- org.scala-lang:scala-library:jar:2.10.4:compile
+[INFO] +- org.springframework:spring-core:jar:4.0.2.RELEASE:compile
+[INFO] |  \- commons-logging:commons-logging:jar:1.1.3:compile
+[INFO] +- org.springframework:spring-beans:jar:4.0.2.RELEASE:compile
+[INFO] |  \- (org.springframework:spring-core:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] +- org.springframework:spring-context:jar:4.0.2.RELEASE:compile
+[INFO] |  +- (org.springframework:spring-beans:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  +- (org.springframework:spring-core:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  \- org.springframework:spring-expression:jar:4.0.2.RELEASE:compile
+[INFO] |     \- (org.springframework:spring-core:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] +- org.springframework:spring-test:jar:4.0.2.RELEASE:test
+[INFO] |  \- (org.springframework:spring-core:jar:4.0.2.RELEASE:test - omitted for duplicate)
+[INFO] +- junit:junit:jar:4.8.1:test
+[INFO] +- org.apache.commons:commons-lang3:jar:3.0:compile
+[INFO] +- org.slf4j:slf4j-api:jar:1.5.2:compile
+[INFO] +- org.slf4j:jcl-over-slf4j:jar:1.5.2:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.5.2:compile
+[INFO] |  +- (org.slf4j:slf4j-api:jar:1.5.2:compile - omitted for duplicate)
+[INFO] |  \- (log4j:log4j:jar:1.2.14:compile - omitted for conflict with 1.2.16)
+[INFO] \- log4j:log4j:jar:1.2.16:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building web Maven Webapp 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.1:tree (default-cli) @ web ---
+[INFO] com.escom.spring:web:war:0.0.1-SNAPSHOT
+[INFO] +- junit:junit:jar:3.8.1:test
+[INFO] +- org.springframework:spring-webmvc:jar:4.0.3.RELEASE:compile
+[INFO] |  +- (org.springframework:spring-beans:jar:4.0.3.RELEASE:compile - omitted for conflict with 4.0.2.RELEASE)
+[INFO] |  +- (org.springframework:spring-context:jar:4.0.3.RELEASE:compile - omitted for conflict with 4.0.2.RELEASE)
+[INFO] |  +- (org.springframework:spring-core:jar:4.0.3.RELEASE:compile - omitted for conflict with 4.0.2.RELEASE)
+[INFO] |  +- org.springframework:spring-expression:jar:4.0.3.RELEASE:compile
+[INFO] |  |  \- (org.springframework:spring-core:jar:4.0.3.RELEASE:compile - omitted for duplicate)
+[INFO] |  \- org.springframework:spring-web:jar:4.0.3.RELEASE:compile
+[INFO] |     +- (org.springframework:spring-aop:jar:4.0.3.RELEASE:compile - omitted for duplicate)
+[INFO] |     +- (org.springframework:spring-beans:jar:4.0.3.RELEASE:compile - omitted for duplicate)
+[INFO] |     +- (org.springframework:spring-context:jar:4.0.3.RELEASE:compile - omitted for duplicate)
+[INFO] |     \- (org.springframework:spring-core:jar:4.0.3.RELEASE:compile - omitted for duplicate)
+[INFO] +- javax.servlet:servlet-api:jar:2.5:provided
+[INFO] +- jstl:jstl:jar:1.2:compile
+[INFO] +- taglibs:standard:jar:1.1.2:compile
+[INFO] +- commons-fileupload:commons-fileupload:jar:1.2.1:compile
+[INFO] +- com.escom.spring:service:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- com.escom.spring:repository:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |  +- org.springframework:spring-jdbc:jar:4.0.2.RELEASE:compile
+[INFO] |  |  |  +- (org.springframework:spring-beans:jar:4.0.2.RELEASE:compile - omitted for conflict with 4.0.3.RELEASE)
+[INFO] |  |  |  \- (org.springframework:spring-core:jar:4.0.2.RELEASE:compile - omitted for conflict with 4.0.3.RELEASE)
+[INFO] |  |  +- org.postgresql:postgresql:jar:9.3-1101-jdbc41:compile
+[INFO] |  |  +- com.escom.spring:entity:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |  |  +- org.springframework.data:spring-data-jpa:jar:1.3.4.RELEASE:compile
+[INFO] |  |  |  |  +- org.springframework.data:spring-data-commons:jar:1.5.2.RELEASE:compile
+[INFO] |  |  |  |  |  +- (org.springframework:spring-core:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.3.RELEASE)
+[INFO] |  |  |  |  |  +- (org.springframework:spring-beans:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.3.RELEASE)
+[INFO] |  |  |  |  |  +- (org.slf4j:slf4j-api:jar:1.7.1:compile - omitted for duplicate)
+[INFO] |  |  |  |  |  \- (org.slf4j:jcl-over-slf4j:jar:1.7.1:runtime - omitted for duplicate)
+[INFO] |  |  |  |  +- org.springframework:spring-orm:jar:3.1.4.RELEASE:compile
+[INFO] |  |  |  |  |  +- (org.springframework:spring-beans:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.3.RELEASE)
+[INFO] |  |  |  |  |  +- (org.springframework:spring-core:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.3.RELEASE)
+[INFO] |  |  |  |  |  \- (org.springframework:spring-jdbc:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.2.RELEASE)
+[INFO] |  |  |  |  +- (org.springframework:spring-context:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.3.RELEASE)
+[INFO] |  |  |  |  +- (org.springframework:spring-beans:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.3.RELEASE)
+[INFO] |  |  |  |  +- (org.springframework:spring-core:jar:3.1.4.RELEASE:compile - omitted for conflict with 4.0.3.RELEASE)
+[INFO] |  |  |  |  +- org.aspectj:aspectjrt:jar:1.7.2:compile
+[INFO] |  |  |  |  +- (org.slf4j:slf4j-api:jar:1.7.1:compile - omitted for conflict with 1.5.2)
+[INFO] |  |  |  |  \- (org.slf4j:jcl-over-slf4j:jar:1.7.1:runtime - omitted for conflict with 1.5.2)
+[INFO] |  |  |  +- org.hibernate:hibernate-entitymanager:jar:4.2.5.Final:compile
+[INFO] |  |  |  |  +- org.jboss.logging:jboss-logging:jar:3.1.0.GA:compile
+[INFO] |  |  |  |  +- dom4j:dom4j:jar:1.6.1:compile
+[INFO] |  |  |  |  +- org.hibernate:hibernate-core:jar:4.2.5.Final:compile
+[INFO] |  |  |  |  |  +- antlr:antlr:jar:2.7.7:compile
+[INFO] |  |  |  |  |  +- (org.jboss.logging:jboss-logging:jar:3.1.0.GA:compile - omitted for duplicate)
+[INFO] |  |  |  |  |  +- (dom4j:dom4j:jar:1.6.1:compile - omitted for duplicate)
+[INFO] |  |  |  |  |  +- (org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:jar:1.0.1.Final:compile - omitted for duplicate)
+[INFO] |  |  |  |  |  +- (org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final:compile - omitted for duplicate)
+[INFO] |  |  |  |  |  +- (org.hibernate.common:hibernate-commons-annotations:jar:4.0.2.Final:compile - omitted for duplicate)
+[INFO] |  |  |  |  |  \- (org.javassist:javassist:jar:3.15.0-GA:compile - omitted for duplicate)
+[INFO] |  |  |  |  +- org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:jar:1.0.1.Final:compile
+[INFO] |  |  |  |  +- org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final:compile
+[INFO] |  |  |  |  +- org.hibernate.common:hibernate-commons-annotations:jar:4.0.2.Final:compile
+[INFO] |  |  |  |  |  \- (org.jboss.logging:jboss-logging:jar:3.1.0.CR2:compile - omitted for conflict with 3.1.0.GA)
+[INFO] |  |  |  |  \- org.javassist:javassist:jar:3.15.0-GA:compile
+[INFO] |  |  |  +- javax.validation:validation-api:jar:1.1.0.Final:compile
+[INFO] |  |  |  +- org.hibernate:hibernate-validator:jar:5.0.3.Final:compile
+[INFO] |  |  |  |  +- (javax.validation:validation-api:jar:1.1.0.Final:compile - omitted for duplicate)
+[INFO] |  |  |  |  +- (org.jboss.logging:jboss-logging:jar:3.1.1.GA:compile - omitted for conflict with 3.1.0.GA)
+[INFO] |  |  |  |  \- com.fasterxml:classmate:jar:1.0.0:compile
+[INFO] |  |  |  +- (org.springframework:spring-core:jar:4.0.2.RELEASE:compile - omitted for conflict with 4.0.3.RELEASE)
+[INFO] |  |  |  +- (org.springframework:spring-beans:jar:4.0.2.RELEASE:compile - omitted for conflict with 4.0.3.RELEASE)
+[INFO] |  |  |  +- (org.springframework:spring-context:jar:4.0.2.RELEASE:compile - omitted for conflict with 4.0.3.RELEASE)
+[INFO] |  |  |  +- (org.apache.commons:commons-lang3:jar:3.0:compile - omitted for duplicate)
+[INFO] |  |  |  +- (org.slf4j:slf4j-api:jar:1.5.2:compile - omitted for duplicate)
+[INFO] |  |  |  +- (org.slf4j:jcl-over-slf4j:jar:1.5.2:compile - omitted for duplicate)
+[INFO] |  |  |  +- (org.slf4j:slf4j-log4j12:jar:1.5.2:compile - omitted for duplicate)
+[INFO] |  |  |  \- (log4j:log4j:jar:1.2.16:compile - omitted for duplicate)
+[INFO] |  |  +- (org.neo4j:neo4j-cypher-compiler-2.1:jar:2.1.2:compile - omitted for duplicate)
+[INFO] |  |  +- (org.springframework:spring-core:jar:4.0.2.RELEASE:compile - omitted for conflict with 4.0.3.RELEASE)
+[INFO] |  |  +- (org.springframework:spring-beans:jar:4.0.2.RELEASE:compile - omitted for conflict with 4.0.3.RELEASE)
+[INFO] |  |  +- (org.springframework:spring-context:jar:4.0.2.RELEASE:compile - omitted for conflict with 4.0.3.RELEASE)
+[INFO] |  |  +- (org.apache.commons:commons-lang3:jar:3.0:compile - omitted for duplicate)
+[INFO] |  |  +- (org.slf4j:slf4j-api:jar:1.5.2:compile - omitted for duplicate)
+[INFO] |  |  +- (org.slf4j:jcl-over-slf4j:jar:1.5.2:compile - omitted for duplicate)
+[INFO] |  |  +- (org.slf4j:slf4j-log4j12:jar:1.5.2:compile - omitted for duplicate)
+[INFO] |  |  \- (log4j:log4j:jar:1.2.16:compile - omitted for duplicate)
+[INFO] |  +- org.neo4j:neo4j-cypher-compiler-2.1:jar:2.1.2:compile
+[INFO] |  |  +- org.parboiled:parboiled-scala_2.10:jar:1.1.6:compile
+[INFO] |  |  |  \- org.parboiled:parboiled-core:jar:1.1.6:compile
+[INFO] |  |  +- net.sf.opencsv:opencsv:jar:2.3:compile
+[INFO] |  |  \- org.scala-lang:scala-library:jar:2.10.4:compile
+[INFO] |  +- (org.springframework:spring-core:jar:4.0.2.RELEASE:compile - omitted for conflict with 4.0.3.RELEASE)
+[INFO] |  +- (org.springframework:spring-beans:jar:4.0.2.RELEASE:compile - omitted for conflict with 4.0.3.RELEASE)
+[INFO] |  +- (org.springframework:spring-context:jar:4.0.2.RELEASE:compile - omitted for conflict with 4.0.3.RELEASE)
+[INFO] |  +- (org.apache.commons:commons-lang3:jar:3.0:compile - omitted for duplicate)
+[INFO] |  +- (org.slf4j:slf4j-api:jar:1.5.2:compile - omitted for duplicate)
+[INFO] |  +- (org.slf4j:jcl-over-slf4j:jar:1.5.2:compile - omitted for duplicate)
+[INFO] |  +- (org.slf4j:slf4j-log4j12:jar:1.5.2:compile - omitted for duplicate)
+[INFO] |  \- (log4j:log4j:jar:1.2.16:compile - omitted for duplicate)
+[INFO] +- org.springframework:spring-core:jar:4.0.2.RELEASE:compile
+[INFO] |  \- commons-logging:commons-logging:jar:1.1.3:compile
+[INFO] +- org.springframework:spring-beans:jar:4.0.2.RELEASE:compile
+[INFO] |  \- (org.springframework:spring-core:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] +- org.springframework:spring-context:jar:4.0.2.RELEASE:compile
+[INFO] |  +- (org.springframework:spring-beans:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  +- (org.springframework:spring-core:jar:4.0.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  \- (org.springframework:spring-expression:jar:4.0.2.RELEASE:compile - omitted for conflict with 4.0.3.RELEASE)
+[INFO] +- org.springframework:spring-test:jar:4.0.2.RELEASE:test
+[INFO] |  \- (org.springframework:spring-core:jar:4.0.2.RELEASE:test - omitted for duplicate)
+[INFO] +- org.apache.commons:commons-lang3:jar:3.0:compile
+[INFO] +- org.slf4j:slf4j-api:jar:1.5.2:compile
+[INFO] +- org.slf4j:jcl-over-slf4j:jar:1.5.2:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.5.2:compile
+[INFO] |  +- (org.slf4j:slf4j-api:jar:1.5.2:compile - omitted for duplicate)
+[INFO] |  \- (log4j:log4j:jar:1.2.14:compile - omitted for conflict with 1.2.16)
+[INFO] \- log4j:log4j:jar:1.2.16:compile
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] Concierto ......................................... SUCCESS [1.209s]
+[INFO] entity ............................................ SUCCESS [0.630s]
+[INFO] repository ........................................ SUCCESS [0.473s]
+[INFO] service ........................................... SUCCESS [0.108s]
+[INFO] web Maven Webapp .................................. SUCCESS [0.191s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 3.375s
+[INFO] Finished at: Thu Jul 24 21:57:45 CDT 2014
+[INFO] Final Memory: 12M/220M
+[INFO] ------------------------------------------------------------------------

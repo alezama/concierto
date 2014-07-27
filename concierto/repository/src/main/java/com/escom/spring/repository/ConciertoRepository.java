@@ -19,4 +19,6 @@ public interface ConciertoRepository extends CrudRepository<Concierto, Integer> 
 	
 	@Query("SELECT c FROM Concierto c WHERE c.lugar = :lugar")
 	public List<Concierto> findByLugar (@Param("lugar") Lugar lugar);
+	
+	
 }

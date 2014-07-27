@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import java.util.List;
 
 
@@ -18,6 +21,7 @@ public class Cliente implements Serializable {
 
 	@Id
 	@Column(name="id_cliente")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idCliente;
 
 	private int edad;
@@ -25,7 +29,8 @@ public class Cliente implements Serializable {
 	private String nombre;
 
 	//bi-directional many-to-many association to Concierto
-	@ManyToMany(mappedBy="clientes", cascade=CascadeType.ALL)
+	@ManyToMany(mappedBy="clientes")
+	@Fetch(FetchMode.JOIN)
 	private List<Concierto> conciertos;
 
 	public Cliente() {
@@ -61,6 +66,10 @@ public class Cliente implements Serializable {
 
 	public void setConciertos(List<Concierto> conciertos) {
 		this.conciertos = conciertos;
+	}
+	
+	public void addConcierto (Concierto concierto) {
+		this.conciertos.add(concierto);
 	}
 
 }
