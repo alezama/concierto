@@ -1,5 +1,6 @@
 package com.escom.spring.web;
 
+import java.rmi.ServerException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -46,6 +47,8 @@ public class ConciertoController {
 	@RequestMapping(method=RequestMethod.GET, value="/newConcierto")
 	public String requestNewConcierto(Map<String,Object> model){
 		Concierto concierto = new Concierto();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		model.put("todaysDate", sdf.format(new Date()));
 		model.put("conciertoForm", concierto);
 		return "NewConciertoForm";
 	}
@@ -57,16 +60,28 @@ public class ConciertoController {
 	            dateFormat, false));
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value="/registroConciertoResult")
+	@RequestMapping(method=RequestMethod.POST, value="/registroConciertoResult")
 	public String storeNewConcert(@ModelAttribute("conciertoForm") Concierto concierto,
 			@RequestParam("lugarOption") Integer lugarID,
 			@RequestParam("bandaOption") Integer bandaID,
 			Map<String, Object> model) {
 		
-		
+		if (lugarID == null || bandaID == null) {
+			if (lugarID == null) {
+				model.put("errorMessage", "Se debe de seleccionar un lugar válido.");
+			} else if (bandaID == null) {
+				model.put("errorMessage", "Se debe de seleccionar una banda válida.");
+			}
+			return requestNewConcierto(model);
+		}
 		concierto.setBanda(admonBandaService.findBandaById(bandaID));
 		concierto.setLugar(admonLugarService.findLugarById(lugarID));
-		admonConciertoService.addConcierto(concierto);
+		try {
+			admonConciertoService.addConcierto(concierto);
+		} catch (ServerException e) {
+			model.put("errorMessage", e.getMessage());
+			return requestNewConcierto(model);
+		}
 		model.put("objectId", concierto.getBanda());
 		return "SuccessRegisterRecord";
 	}

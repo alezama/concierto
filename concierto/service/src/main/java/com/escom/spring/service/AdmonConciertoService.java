@@ -14,7 +14,7 @@ public interface AdmonConciertoService {
 
 	public abstract List<Concierto> getConciertosByLugar(Lugar lugar);
 
-	public abstract void addConcierto(Concierto concierto);
+	public abstract void addConcierto(Concierto concierto) throws ServerException;
 
 	public abstract void deleteConcierto(Concierto concierto);
 
@@ -26,4 +26,6 @@ public interface AdmonConciertoService {
 	public abstract  List<Concierto> findAllConciertos ();
 	
 	public abstract Concierto findById (Integer id);
+	
+	public abstract String printConcierto (Concierto concierto);
 }

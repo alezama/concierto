@@ -1,7 +1,5 @@
 package com.escom.spring.web;
 
-import java.rmi.ServerException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.escom.spring.entity.Banda;
 import com.escom.spring.entity.Cliente;
@@ -58,6 +55,14 @@ public class CompraController {
 	public String processFirstSearch (Map<String, Object> model,
 			@ModelAttribute("formCompra") Compra compra, 
 			HttpServletRequest request ) {
+		
+		/*
+		 * If the session is invalid return to the main newCompra page
+		 */
+		if (!isValidSession(request)){
+			return requestNewConcierto(model);
+		}
+		
 		/* Se borran los atributos de sesion que se pudieron setear durante un error
 		*  en el método processFinish (...) */
 		request.getSession().removeAttribute("idLugar");
@@ -95,6 +100,13 @@ public class CompraController {
 			@ModelAttribute("formCompra") Compra compra, 
 			HttpServletRequest request){
 
+		/*
+		 * If the session is invalid return to the main newCompra page
+		 */
+		if (!isValidSession(request)){
+			return requestNewConcierto(model);
+		}
+		
 		if (compra.getIdConcierto() == null ) {
 			model.put("errorMessage", "Debes de seleccionar un concierto." );
 			compra.setIdConcierto((Integer) request.getSession().getAttribute("idLugar"));
@@ -126,7 +138,7 @@ public class CompraController {
 	public String processStart(Map<String, Object> model,
 			@ModelAttribute("formCompra") Compra compra, 
 			HttpServletRequest request) {
-
+		
 		/*
 		 * Limpio los atributos que se pudieron setear en un paso anterior
 		 */
@@ -168,5 +180,16 @@ public class CompraController {
 
 	}
 
+	/**
+	 * The method validates if the session is still valid, to avoid the user to 
+	 * continue through the forms and avoid errors due to missing information
+	 * @param request
+	 * @return True if the session is valid, false otherwise. 
+	 */
+	public boolean isValidSession (HttpServletRequest request) {
+		String nombreCliente = (String) request.getSession().getAttribute("nombreCliente");
+		return 	nombreCliente != null && !nombreCliente.isEmpty();
+
+	}
 
 }

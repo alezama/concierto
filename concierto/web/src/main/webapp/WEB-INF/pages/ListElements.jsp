@@ -8,20 +8,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="${pageContext.request.contextPath}/css/formStyle.css"
 	rel="stylesheet" type="text/css">
-<title>Nuevo Genero</title>
+<title>Lista Elementos</title>
 </head>
 <body>
-	<span class="contact_form">
-		<ul>
-			<li><h1>Nuevo Genero</h1></li>
-			<form:form method="POST" commandName="generoForm"
-				action="registroGeneroResult">
-				<li><form:label path="descripcion">Descripción:</form:label>
-				<form:input tye="text" path="descripcion" required="true" /></li>
-				<br />
-				<li><button class="submit" type="submit">Registrar</button></li>
-			</form:form>
-		</ul>
-	</span>
+	<div class="contact_form">
+		
+	</div>
 </body>
 </html>

@@ -1,12 +1,11 @@
 package com.escom.spring.service.impl;
 
 import java.rmi.ServerException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +13,8 @@ import org.springframework.stereotype.Service;
 import com.escom.spring.entity.Banda;
 import com.escom.spring.entity.Cliente;
 import com.escom.spring.entity.Concierto;
-import com.escom.spring.entity.Genero;
 import com.escom.spring.entity.Lugar;
+import com.escom.spring.repository.BandaRepository;
 import com.escom.spring.repository.ConciertoRepository;
 import com.escom.spring.service.AdmonConciertoService;
 
@@ -25,6 +24,9 @@ public class AdmonConciertoServiceImpl implements AdmonConciertoService  {
 
 	@Autowired
 	ConciertoRepository conciertoRepository;
+	
+	@Autowired
+	BandaRepository bandaRepository;
 	
 	/* (non-Javadoc)
 	 * @see com.escom.spring.service.impl.AdmonConciertoService#getConciertosByBanda(com.escom.spring.entity.Banda)
@@ -59,7 +61,13 @@ public class AdmonConciertoServiceImpl implements AdmonConciertoService  {
 	/* (non-Javadoc)
 	 * @see com.escom.spring.service.impl.AdmonConciertoService#addConcierto(com.escom.spring.entity.Concierto)
 	 */
-	public void addConcierto (Concierto concierto){
+	public void addConcierto (Concierto concierto) throws ServerException{
+		
+		concierto.getBanda();
+		List<Concierto> listaConciertosFecha = conciertoRepository.findConciertosByDateAndBanda(concierto.getFecha(), concierto.getBanda());
+		if(listaConciertosFecha.size() != 0) {
+			throw new ServerException("La banda ya tiene un concierto para esa fecha");
+		}
 		if (concierto.getClientes()==null) {
 			concierto.setClientes(new ArrayList<Cliente>());
 		}
@@ -81,6 +89,16 @@ public class AdmonConciertoServiceImpl implements AdmonConciertoService  {
 	public void registerBanda(Concierto concierto, Banda banda) {
 		
 
+	}
+	
+	public String printConcierto (Concierto concierto) {
+		StringBuilder sb = new StringBuilder();
+		SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy");
+		sb.append(sdf.format(concierto.getFecha()));
+		sb.append(" en el ");
+		sb.append(concierto.getLugar());
+		
+		return sb.toString();
 	}
 
 	/* (non-Javadoc)

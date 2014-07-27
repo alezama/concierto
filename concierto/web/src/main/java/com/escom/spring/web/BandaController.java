@@ -38,14 +38,18 @@ public class BandaController {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/newBanda")
-	public String requestNewBanda (Model model) {
-		model.addAttribute("bandaForm", new Banda());
+	public String requestNewBanda (Map<String, Object> model) {
+		model.put("bandaForm", new Banda());
 		return "NewBandaForm";
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="/registroBandaResult")
 	public String storeNewConcert(@ModelAttribute("bandaForm") Banda banda,
 			@RequestParam("generoOption") Integer idGenero, Map<String, Object> model) {
+		if (idGenero == null) {
+			model.put("errorMessage", "Seleccione un genero válido");
+			return requestNewBanda(model);
+		}
 		banda.setGenero(admonGeneroService.getGeneroById(idGenero));
 		admonBandaService.addBanda(banda);
 		model.put("objectId", banda.getNombre());

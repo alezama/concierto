@@ -30,9 +30,9 @@
 						<option value="1">Banda</option>
 					</form:select></li>
 				<c:if test="${not empty errorMessage}">
-					<li><c:out value="${errorMessage}"></c:out></li>
+					<li class="errorMessage"><c:out value="${errorMessage}"></c:out></li>
 				</c:if>
-				<li><input type="submit" value="Buscar"></li>
+				<li><button class="submit" type="submit">Buscar</button></li>
 			</form:form>
 		</ul>
 	</span>

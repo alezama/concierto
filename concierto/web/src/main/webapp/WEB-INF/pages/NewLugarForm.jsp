@@ -1,39 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="${pageContext.request.contextPath}/css/formStyle.css"
+	rel="stylesheet" type="text/css">
 <title>Nuevo Lugar</title>
 </head>
 <body>
-	<form:form method="POST" commandName="lugarForm" action="registroLugarResult">
-		<table>
-			<tr>
-				<td>Nombre:</td>
-				<td><form:input path="nombre" type="text" required="true" /></td>
-			</tr>
-			<tr>
-				<td>Dirección:</td>
-				<td><form:input path="direccion" type="text" required="true"/></td>
-			</tr>
-			<tr>
-				<td>Capacidad</td>
-				<td><form:input path="capacidad" type="number" min="1" max="1000000" required="true"/> </td>
-			</tr>
-			<tr>
-				<td>Restricción Edad</td>
-				<td> 
-					<form:radiobutton path="restriccionEdad" value="true" label="SÍ" checked="true"/>
-					<form:radiobutton path="restriccionEdad" value="false" label="NO"/>
-				</td>
-			</tr>
-			<tr>
-				<td><input type="submit" value="Registrar"></td>
-			</tr>
-		</table>
+<span class="contact_form">
+	<ul>
+	<li><h1>Nuevo Lugar</h1></li>
+	<form:form method="POST" commandName="lugarForm" action="registroLugarResult">	
+				<li><form:label path="nombre">Nombre</form:label>
+				<form:input path="nombre" type="text" required="true"/></li>
+			
+				<li><form:label path="direccion">Dirección</form:label>
+				<form:input path="direccion" type="text" required="true"/></li>
+				
+				<li><form:label path="capacidad">Capacidad</form:label>
+				<form:input path="capacidad" type="number" min="1" step="100" max="1000000" value="0" required="true"/></li> 
+		
+				<li><form:label path="restriccionEdad">Restricción Edad</form:label></li>
+				<li><ul id="radioButtons">
+					<li><form:radiobutton path="restriccionEdad" value="true" label="SÍ" checked="true"/></li>
+					<li><form:radiobutton path="restriccionEdad" value="false" label="NO"/></li>
+				</ul></li>
+				
+				<li><button class="submit" type="submit">Registrar</button></li>
 	</form:form>
-
+	</ul>
+	</span>
 </body>
 </html>

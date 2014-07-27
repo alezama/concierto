@@ -8,4 +8,6 @@ import com.escom.spring.entity.Banda;
 @Repository
 public interface BandaRepository extends CrudRepository<Banda, Integer> {
 
+
+	
 }
