@@ -8,9 +8,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="${pageContext.request.contextPath}/css/formStyle.css"
 	rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/css/indexPage.css"
+	rel="stylesheet" type="text/css">
 <title>Nueva Banda</title>
 </head>
 <body>
+<c:import var="myData" url="/inserts/nav.html"/>
+	<c:out value="${myData}" escapeXml="false"/>
 	<div class="contact_form">
 		<ul>
 			<li><h1>Nueva Banda</h1></li>

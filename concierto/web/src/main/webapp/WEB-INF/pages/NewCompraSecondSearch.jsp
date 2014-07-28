@@ -10,6 +10,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="${pageContext.request.contextPath}/css/formStyle.css"
 	rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/css/indexPage.css"
+	rel="stylesheet" type="text/css">
 <title>Nueva Compra</title>
 </head>
 <body>

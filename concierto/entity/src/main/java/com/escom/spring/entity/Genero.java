@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import java.util.List;
 
 
@@ -25,6 +28,7 @@ public class Genero implements Serializable {
 
 	//bi-directional many-to-one association to Banda
 	@OneToMany(mappedBy="genero", cascade=CascadeType.ALL)
+	@Fetch(FetchMode.JOIN)
 	private List<Banda> bandas;
 
 	public Genero() {
@@ -55,7 +59,7 @@ public class Genero implements Serializable {
 	}
 
 	public Banda addBanda(Banda banda) {
-		getBandas().add(banda);
+		getBandas().add(banda);	
 		banda.setGenero(this);
 
 		return banda;

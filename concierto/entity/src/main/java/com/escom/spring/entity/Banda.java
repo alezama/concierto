@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import java.util.List;
 
 
@@ -27,11 +32,12 @@ public class Banda implements Serializable {
 
 	//bi-directional many-to-one association to Genero
 	@ManyToOne
+	@Fetch(FetchMode.JOIN)
 	@JoinColumn(name="id_genero")
 	private Genero genero;
 
 	//bi-directional many-to-one association to Concierto
-	@OneToMany(mappedBy="banda", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="banda")
 	private List<Concierto> conciertos;
 
 	public Banda() {

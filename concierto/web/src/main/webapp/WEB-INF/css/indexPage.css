@@ -1,8 +1,5 @@
 @CHARSET "ISO-8859-1";
 
-body, div, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, img, form, fieldset, input, textarea, blockquote {
-	margin: 0; padding: 0; border: 0;
-}
 
 body {
 	background: #ffffff;
@@ -113,4 +110,15 @@ nav ul {
 	nav ul ul ul {
 		position: absolute; left: 100%; top:0;
 	}
-	
+
+h1 {
+	display: block;
+	font-size: 2em;
+	-webkit-margin-before: 0.67em;
+	-webkit-margin-after: 0.67em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	font-weight: bold;
+	font-family: Helvetica, sans-serif;
+	padding-bottom: 15px;
+}
