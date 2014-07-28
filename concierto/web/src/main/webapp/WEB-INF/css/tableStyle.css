@@ -1,0 +1,21 @@
+@CHARSET "ISO-8859-1";
+
+.page {
+  padding:20px;
+  max-width:800px;
+  margin:auto auto;
+ 
+}
+
+table {
+  width:100%;
+  font-family:sans;
+} th {
+  background:#666;
+  color:#fff;
+} td {
+  padding:5px;
+}
+
+
+
