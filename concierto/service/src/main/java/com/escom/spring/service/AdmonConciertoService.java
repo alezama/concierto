@@ -20,8 +20,9 @@ public interface AdmonConciertoService {
 
 	public abstract void registerBanda(Concierto concierto, Banda banda);
 
-	public abstract Concierto createConcierto(Banda banda, Lugar lugar,
-			Date fecha) throws ServerException;
+	public abstract void addParametersToConcierto(Banda banda, 
+			Lugar lugar,
+			Date fecha, Concierto concierto) throws ServerException;
 
 	public abstract  List<Concierto> findAllConciertos ();
 	

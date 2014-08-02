@@ -11,7 +11,7 @@
 	<mvc:annotation-driven/>
 	<mvc:default-servlet-handler />
 	<mvc:resources mapping="/css/**" location="/WEB-INF/css/" />
-	<mvc:resources mapping="/inserts/**" location="/WEB-INF/inserts/" />
+	<mvc:resources mapping="/images/**" location="/WEB-INF/images/" />
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	<property name="prefix">
 		<value>/WEB-INF/pages/</value>
@@ -20,4 +20,12 @@
 		<value>.jsp</value>
 	</property>
 	</bean>
+	<bean id="tilesConfigurer"
+        class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/tiles/tiles-definition.xml</value>
+            </list>
+        </property>
+    </bean>
 </beans>

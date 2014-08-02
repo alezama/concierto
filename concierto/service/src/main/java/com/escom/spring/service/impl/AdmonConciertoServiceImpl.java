@@ -104,15 +104,31 @@ public class AdmonConciertoServiceImpl implements AdmonConciertoService  {
 	/* (non-Javadoc)
 	 * @see com.escom.spring.service.impl.AdmonConciertoService#createConcierto(com.escom.spring.entity.Banda, com.escom.spring.entity.Lugar, java.util.Date)
 	 */
-	public Concierto createConcierto(Banda banda, Lugar lugar, Date fecha) throws ServerException {
-		Concierto concierto = new Concierto();
+	public void addParametersToConcierto(Banda banda, 
+			Lugar lugar,
+			Date fecha, Concierto concierto) throws ServerException {
+
+		if (fecha == null){
+			fecha = concierto.getFecha();
+		}
+		if (lugar == null) {
+			lugar = concierto.getLugar();
+		}
+		if(banda == null) {
+			banda = concierto.getBanda();
+		}
+		
+		if (fecha == null || lugar==null || banda==null ){
+			throw new ServerException("No hay suficientes parametros de entrada.");
+		}
 		
 		//La banda no puede tener más de un concierto el mismo día
-		for (Concierto conciertoIt: banda.getConciertos()){
-			if (conciertoIt.getFecha().equals(fecha)){
-				throw new ServerException("La banda ya tiene un concierto ese día.");
-			}
+		List<Concierto> lugaresByFecha = conciertoRepository.findConciertosByDate(fecha);
+
+		if (lugaresByFecha != null && lugaresByFecha.size() != 0){
+			throw new ServerException("La banda ya tiene un concierto ese día.");
 		}
+
 		
 		//La capacidad del lugar debe de corresponder con el ranking de la banda
 		switch (banda.getRanking()) {
@@ -137,10 +153,10 @@ public class AdmonConciertoServiceImpl implements AdmonConciertoService  {
 		}
 
 		if (concierto.getBanda() == null) {
-			throw new ServerException("El ranking de la banda no corresponde con la capacidad del lugar.");
+			throw new ServerException("El ranking de la banda no permite un concierto en este lugar por su capacidad.");
 
 		}
-		return concierto;
+		
 	}
 
 	

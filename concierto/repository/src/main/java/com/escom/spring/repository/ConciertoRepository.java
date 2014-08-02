@@ -23,4 +23,7 @@ public interface ConciertoRepository extends CrudRepository<Concierto, Integer> 
 	
 	@Query("SELECT c FROM Concierto c WHERE c.banda = :banda and c.fecha = :date")
 	public List<Concierto> findConciertosByDateAndBanda( @Param("date")  Date date, @Param("banda") Banda banda);
+	
+	@Query("SELECT c FROM Concierto c WHERE c.fecha = :date")
+	public List<Concierto> findConciertosByDate(@Param("date")  Date date);
 }

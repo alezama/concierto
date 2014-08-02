@@ -74,9 +74,13 @@ public class ConciertoController {
 			}
 			return requestNewConcierto(model);
 		}
-		concierto.setBanda(admonBandaService.findBandaById(bandaID));
-		concierto.setLugar(admonLugarService.findLugarById(lugarID));
+		
 		try {
+		admonConciertoService.addParametersToConcierto(
+				admonBandaService.findBandaById(bandaID), 
+				admonLugarService.findLugarById(lugarID),
+				null,
+				concierto);
 			admonConciertoService.addConcierto(concierto);
 		} catch (ServerException e) {
 			model.put("errorMessage", e.getMessage());

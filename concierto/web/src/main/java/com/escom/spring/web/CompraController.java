@@ -2,6 +2,8 @@ package com.escom.spring.web;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -67,6 +69,7 @@ public class CompraController {
 		*  en el método processFinish (...) */
 		request.getSession().removeAttribute("idLugar");
 		request.getSession().removeAttribute("idBanda");
+		request.getSession().removeAttribute("errorMessage");
 		
 		List<Concierto> conciertoList  = null;
 		if (compra.getIdBanda() != null) {
@@ -80,6 +83,17 @@ public class CompraController {
 			request.getSession().setAttribute("idLugar", lugar.getIdLugar());
 			request.getSession().setAttribute("nombreLugar",lugar.getNombre());
 		}
+		// Filter the conciertoList, it should not show the conciertos which place
+		// does not allow the underage in case it has this restriction, and the 
+		// user is under 18 years.
+		
+		Boolean underAge = (Boolean) request.getSession().getAttribute("underAge");
+		log.info("El cliente es menor de edad " + underAge.booleanValue());
+		if (underAge.booleanValue()) {
+			conciertoList = conciertoList.stream().filter( c -> !c.getLugar().getRestriccionEdad())
+					.collect(Collectors.toList());
+		}
+		
 		if (conciertoList != null &&conciertoList.size() > 0 ){
 			model.put("listaConciertos", 
 					conciertoList);
@@ -146,12 +160,15 @@ public class CompraController {
 		request.getSession().removeAttribute("nombreBanda");
 		request.getSession().removeAttribute("idLugar");
 		request.getSession().removeAttribute("nombreLugar");
+		request.getSession().removeAttribute("errorMessage");
+
 		
 		Cliente cliente = admonClienteService.getClienteById(compra.getIdCliente());
 		log.info("El valor del ID del cliente es: " +  cliente.getIdCliente());
 		request.getSession().setAttribute("idCliente",cliente.getIdCliente());
 		request.getSession().setAttribute("nombreCliente",cliente.getNombre());
 		request.getSession().setAttribute("seleccionCompra",compra.getSeleccionCompra());
+		request.getSession().setAttribute("underAge", cliente.getEdad()<18);
 		
 		if(compra.getSeleccionCompra() == 0) {
 			List<Lugar> lugarList = admonLugarService.findAllLugares();

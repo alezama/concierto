@@ -2,8 +2,10 @@
 
 .page {
   padding:20px;
-  max-width:800px;
+  max-width:1000px;
   margin:auto auto;
+  min-height:100%;
+  position:relative;
  
 }
 

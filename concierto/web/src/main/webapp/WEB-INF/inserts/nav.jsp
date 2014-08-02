@@ -1,6 +1,5 @@
 <nav>
 	<ul>
-		<li><a href="#">BoletoMaestro</a></li>
 		<li><a href="#">Genero</a>
 			<ul>
 				<li><a href="./newGenero">Nuevo Genero</a></li>
@@ -21,6 +20,12 @@
 			<li><a href="./newCliente">Nuevo Cliente</a></li>
 			<li><a href="./listClientes">Listar Clientes</a></li>
 		</ul></li>
+		<li><a href="#">Concierto</a>
+		<ul>
+			<li><a href="./newConcierto">Nuevo Concierto</a></li>
+			<li><a href="./listConciertos">Listar Conciertos</a></li>
+		</ul></li>
+		
 		<li><a href="#">Compra</a>
 		<ul>
 			<li><a href="./newCompra">Nueva Compra</a></li>

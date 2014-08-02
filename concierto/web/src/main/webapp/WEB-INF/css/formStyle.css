@@ -24,7 +24,7 @@
 }
 
 
-	
+/*	
 *{
    margin:0;
    padding:0;
@@ -34,7 +34,7 @@ body{
    text-align:center; /*For IE6 Shenanigans*/
 }
  
-
+*/
 
 .contact_form {
 	width:960px;
@@ -84,7 +84,7 @@ body{
 .contact_form button {margin-left:156px;}
 
 
-button.submit {
+.contact_form button.submit {
     background-color: #68b12f;
     background: -webkit-gradient(linear, left top, left bottom, from(#68b12f), to(#50911e));
     background: -webkit-linear-gradient(top, #68b12f, #50911e);
@@ -110,11 +110,11 @@ button.submit {
     text-align: center;
     text-shadow: 0 -1px 0 #396715;
 }
-button.submit:hover {
+.contact_form button.submit:hover {
     opacity:.85;
     cursor: pointer; 
 }
-button.submit:active {
+.contact_form button.submit:active {
     border: 1px solid #20911e;
     box-shadow: 0 0 10px 5px #356b0b inset; 
     -webkit-box-shadow:0 0 10px 5px #356b0b inset ;

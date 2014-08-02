@@ -1,14 +1,23 @@
 @CHARSET "ISO-8859-1";
 
-
+html,
 body {
 	background: #ffffff;
 	font-family: Helvetica, sans-serif; font-size: 18px; line-height: 24px;
+	position: relative;
+	margin:0;
+   	padding:0;
+	height:100%;
+	
 }
 
 nav {
-	margin: 100px auto; 
+	margin: -50px auto; 
 	text-align: center;
+	padding-bottom: 30px;
+	position: absolute;	
+	z-index: 10;
+	
 }
 
 nav ul ul {
@@ -58,11 +67,11 @@ nav ul {
 		float: left;
 	}
 		nav ul li:hover {
-			opacity:.85;
+			
     		cursor: pointer; 
 		}
 			nav ul li:hover a {
-				opacity:.85;
+				
     			cursor: pointer; 
 			}
 		
@@ -93,7 +102,7 @@ nav ul {
 		    -moz-border-radius: 5px;
 		    -ms-border-radius: 5px;
 		    -o-border-radius: 5px;
-		    width: 100px;
+		    width: 180px;
 		}
 			nav ul ul li a {
 				margin-left: -30px;
@@ -120,5 +129,51 @@ h1 {
 	-webkit-margin-end: 0px;
 	font-weight: bold;
 	font-family: Helvetica, sans-serif;
-	padding-bottom: 15px;
+}
+
+/************************************************************
+*************** Header Image ********************************
+************************************************************/
+
+.header img {
+	max-height: 170px;
+	margin-top: -20px;
+	max-width: 80%;
+}
+
+/************************************************************
+*************** Content  ************************************
+************************************************************/
+
+
+.content {
+	max-width: 80%;
+	margin: auto;
+	padding-top: 40px;
+	padding-bottom:40px;
+}
+
+.contnent h1 {
+	text-align: center;
+}
+
+
+/************************************************************
+*************** Footer  ************************************
+************************************************************/
+
+.footer {
+	
+	width:100%;
+	height:40px;
+	position:absolute;
+	bottom:0;
+	left:0;
+	color:#fff;
+	  clear: both;
+	  background: #50911e;
+	text-align: center;
+		max-width: 90%;
+	
+	
 }
