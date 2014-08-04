@@ -17,6 +17,7 @@ import com.escom.spring.entity.Lugar;
 import com.escom.spring.repository.BandaRepository;
 import com.escom.spring.repository.ConciertoRepository;
 import com.escom.spring.service.AdmonConciertoService;
+import com.escom.spring.service.exception.ServiceException;
 
 
 @Service
@@ -35,6 +36,9 @@ public class AdmonConciertoServiceImpl implements AdmonConciertoService  {
 		return conciertoRepository.findByBanda(banda);
 	}
 
+	
+
+	
 	/* (non-Javadoc)
 	 * @see com.escom.spring.service.impl.AdmonConciertoService#getConciertosByLugar(com.escom.spring.entity.Lugar)
 	 */
@@ -61,12 +65,12 @@ public class AdmonConciertoServiceImpl implements AdmonConciertoService  {
 	/* (non-Javadoc)
 	 * @see com.escom.spring.service.impl.AdmonConciertoService#addConcierto(com.escom.spring.entity.Concierto)
 	 */
-	public void addConcierto (Concierto concierto) throws ServerException{
+	public void addConcierto (Concierto concierto) throws ServiceException{
 		
 		concierto.getBanda();
 		List<Concierto> listaConciertosFecha = conciertoRepository.findConciertosByDateAndBanda(concierto.getFecha(), concierto.getBanda());
 		if(listaConciertosFecha.size() != 0) {
-			throw new ServerException("La banda ya tiene un concierto para esa fecha");
+			throw new ServiceException("La banda ya tiene un concierto para esa fecha");
 		}
 		if (concierto.getClientes()==null) {
 			concierto.setClientes(new ArrayList<Cliente>());
@@ -106,7 +110,7 @@ public class AdmonConciertoServiceImpl implements AdmonConciertoService  {
 	 */
 	public void addParametersToConcierto(Banda banda, 
 			Lugar lugar,
-			Date fecha, Concierto concierto) throws ServerException {
+			Date fecha, Concierto concierto) throws ServiceException {
 
 		if (fecha == null){
 			fecha = concierto.getFecha();
@@ -119,14 +123,14 @@ public class AdmonConciertoServiceImpl implements AdmonConciertoService  {
 		}
 		
 		if (fecha == null || lugar==null || banda==null ){
-			throw new ServerException("No hay suficientes parametros de entrada.");
+			throw new ServiceException("No hay suficientes parametros de entrada.");
 		}
 		
 		//La banda no puede tener más de un concierto el mismo día
 		List<Concierto> lugaresByFecha = conciertoRepository.findConciertosByDate(fecha);
 
 		if (lugaresByFecha != null && lugaresByFecha.size() != 0){
-			throw new ServerException("La banda ya tiene un concierto ese día.");
+			throw new ServiceException("La banda ya tiene un concierto ese día.");
 		}
 
 		
@@ -148,14 +152,17 @@ public class AdmonConciertoServiceImpl implements AdmonConciertoService  {
 			}
 			break;
 		default:
-			throw new ServerException("El ranking de la banda no es válido.");
+			throw new ServiceException("El ranking de la banda no es válido.");
 			
 		}
 
 		if (concierto.getBanda() == null) {
-			throw new ServerException("El ranking de la banda no permite un concierto en este lugar por su capacidad.");
+			throw new ServiceException("El ranking de la banda no permite un concierto en este lugar por su capacidad.");
 
 		}
+		
+		concierto.setLugar(lugar);
+		concierto.setFecha(fecha);
 		
 	}
 

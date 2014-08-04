@@ -2,6 +2,7 @@ package com.escom.spring.web;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import antlr.collections.impl.LList;
 
 import com.escom.spring.entity.Banda;
 import com.escom.spring.entity.Cliente;
@@ -146,10 +150,10 @@ public class ListElelementsController {
 		headerList.add("Boletos Disponibles");
 	
 		List<List<String>> dataList = new ArrayList<List<String>>();
+		SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd/MM/yyyy");
 		for(Concierto concierto: listaConcierto) {
 			List<String> itList = new ArrayList<String>();
-			itList.add(concierto.getBanda().getNombre());
-			SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd/MM/yyyy");
+			itList.add(concierto.getBanda().getNombre());	
 			itList.add(sdf.format(concierto.getFecha()));
 			itList.add(concierto.getLugar().getNombre());
 			itList.add(Integer.toString(concierto.getClientes().size()));
@@ -163,5 +167,64 @@ public class ListElelementsController {
 
 		
 		return "ListElements";
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, value="/listConciertosCliente")
+	public String listConciertosByCliente(Map<String, Object> model){
+		List<Cliente> listaClientes = admonClienteService.findAllClientes();
+		model.put("clientesList", listaClientes);
+		
+		return "SelectClientSearch";
+	}
+	
+	@RequestMapping(method=RequestMethod.POST, value="/processClienteBusqueda")
+	public String displayTableConciertosByCliente(Map<String, Object> model, 
+			@RequestParam("cliente") Integer clienteID) {
+		
+		if(clienteID == null ) {
+			model.put("errorMessage", "Seleccione un cliente válido.");
+			return listConciertosByCliente(model);
+		}
+		Cliente cliente = admonClienteService.getClienteById(clienteID);
+		List<Concierto> listaConciertos = cliente.getConciertos();
+		HashMap<Integer, Integer> listaBoletos = new HashMap<Integer,Integer>();
+		for (Concierto c : listaConciertos) {
+			if(listaBoletos.containsKey(c.getIdConcierto())) {
+				Integer boletos = listaBoletos.get(c.getIdConcierto());
+				boletos = boletos.intValue() + 1;
+				listaBoletos.put(c.getIdConcierto(), boletos);
+			}else {
+				listaBoletos.put(c.getIdConcierto(), 1);
+			}
+		}
+		
+		List<String> headerList = new ArrayList<String>();
+		headerList.add("Banda");
+		headerList.add("Fecha");
+		headerList.add("Lugar");
+		headerList.add("Boletos Comprados");
+		
+		List<List<String>> dataList = new ArrayList<List<String>>();
+		SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd/MM/yyyy");
+
+		for (Integer idConcierto : listaBoletos.keySet()) {
+		 Concierto concierto = admonConciertoService.findById(idConcierto);
+			List<String> itList = new ArrayList<String>();
+			itList.add(concierto.getBanda().getNombre());
+			itList.add(sdf.format(concierto.getFecha()));
+			itList.add(concierto.getLugar().getNombre());
+			itList.add(listaBoletos.get(idConcierto).toString());
+			dataList.add(itList);
+
+		}
+		
+		model.put("tableHeaders", headerList);
+		model.put("dataList", dataList);
+		model.put("tableTitle", "Lista de Conciertos de " + cliente.getNombre());
+
+		
+		return "ListElements";
+		
+		 
 	}
 }

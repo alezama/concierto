@@ -29,11 +29,20 @@ public class AdmonBandaServiceImpl implements AdmonBandaService{
 	}
 	
 	
-	public void addBanda (Banda banda) {
-		bandaRepository.save(banda);
+	public Banda addBanda (Banda banda) {
+		return bandaRepository.save(banda);
 	}
 	
 	public Banda findBandaById (Integer id) {
 		return bandaRepository.findOne(id);
+	}
+
+
+	@Override
+	public void deleteBanda(Banda banda) {
+		Banda deleted = bandaRepository.findOne(banda.getIdBanda());
+		if (deleted != null) {
+			bandaRepository.delete(deleted);
+		}
 	}
 }

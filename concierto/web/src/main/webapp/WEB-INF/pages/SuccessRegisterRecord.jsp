@@ -6,8 +6,6 @@
  
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
-	<c:import var="myData" url="/inserts/nav.html"/>
-	<c:out value="${myData}" escapeXml="false"/>
 	<p>El registro ${objectId} se insertó con éxito</p>
 </tiles:putAttribute>
 </tiles:insertDefinition>

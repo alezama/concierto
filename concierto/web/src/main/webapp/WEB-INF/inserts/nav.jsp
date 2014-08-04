@@ -29,7 +29,7 @@
 		<li><a href="#">Compra</a>
 		<ul>
 			<li><a href="./newCompra">Nueva Compra</a></li>
-			<li><a href="#">Listar Compras por Cliente</a></li>
+			<li><a href="./listConciertosCliente">Listar Compras por Cliente</a></li>
 		</ul></li>
 	</ul>
 </nav>

@@ -8,6 +8,6 @@ import com.escom.spring.entity.Cliente;
 @Repository
 public interface ClienteRepository extends CrudRepository<Cliente, Integer> {
 
-
+	
 	
 }

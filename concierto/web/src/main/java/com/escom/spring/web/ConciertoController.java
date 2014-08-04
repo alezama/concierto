@@ -22,6 +22,7 @@ import com.escom.spring.entity.Lugar;
 import com.escom.spring.service.AdmonBandaService;
 import com.escom.spring.service.AdmonConciertoService;
 import com.escom.spring.service.AdmonLugarService;
+import com.escom.spring.service.exception.ServiceException;
 
 @Controller
 public class ConciertoController {
@@ -81,12 +82,12 @@ public class ConciertoController {
 				admonLugarService.findLugarById(lugarID),
 				null,
 				concierto);
-			admonConciertoService.addConcierto(concierto);
-		} catch (ServerException e) {
+		admonConciertoService.addConcierto(concierto);
+		} catch (ServiceException e) {
 			model.put("errorMessage", e.getMessage());
 			return requestNewConcierto(model);
 		}
-		model.put("objectId", concierto.getBanda());
+		model.put("objectId", concierto.getBanda().getNombre());
 		return "SuccessRegisterRecord";
 	}
 }

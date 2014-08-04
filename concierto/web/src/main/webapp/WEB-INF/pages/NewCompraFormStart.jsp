@@ -13,6 +13,7 @@
 				commandName="formCompra">
 				<li><form:label path="idCliente">Cliente</form:label> <form:select
 						path="idCliente" id="cliente" readonly="readonly">
+						<option value="" label="--Seleccionar---"></option>
 						<c:forEach items="${clienteList}" var="cliente">
 							<form:option value="${cliente.idCliente}"
 								label="${cliente.nombre}">
@@ -21,6 +22,7 @@
 					</form:select></li>
 				<li><form:label path="seleccionCompra">Tipo de Búsqueda</form:label>
 					<form:select path="seleccionCompra">
+						<option value="" label="--Seleccionar---"></option>
 						<option value="0">Lugar</option>
 						<option value="1">Banda</option>
 					</form:select></li>

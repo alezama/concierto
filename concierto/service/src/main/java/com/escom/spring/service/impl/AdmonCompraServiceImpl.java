@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.escom.spring.entity.Cliente;
+import com.escom.spring.entity.Compra;
 import com.escom.spring.repository.ClienteRepository;
 import com.escom.spring.service.AdmonCompraService;
 
@@ -13,7 +14,15 @@ public class AdmonCompraServiceImpl implements AdmonCompraService{
 	@Autowired
 	ClienteRepository clienteRepository;
 	
-	public void addCliente(Cliente cliente){
-		clienteRepository.save(cliente);
+	public Cliente addCliente(Cliente cliente){
+		return clienteRepository.save(cliente);
 	}
+
+	@Override
+	public void deleteCompra(Compra compra) {
+		
+	}
+	
+	
+	
 }

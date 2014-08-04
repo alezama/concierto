@@ -7,6 +7,7 @@ import java.util.List;
 import com.escom.spring.entity.Banda;
 import com.escom.spring.entity.Concierto;
 import com.escom.spring.entity.Lugar;
+import com.escom.spring.service.exception.ServiceException;
 
 public interface AdmonConciertoService {
 
@@ -14,7 +15,7 @@ public interface AdmonConciertoService {
 
 	public abstract List<Concierto> getConciertosByLugar(Lugar lugar);
 
-	public abstract void addConcierto(Concierto concierto) throws ServerException;
+	public abstract void addConcierto(Concierto concierto) throws ServiceException;
 
 	public abstract void deleteConcierto(Concierto concierto);
 
@@ -22,7 +23,7 @@ public interface AdmonConciertoService {
 
 	public abstract void addParametersToConcierto(Banda banda, 
 			Lugar lugar,
-			Date fecha, Concierto concierto) throws ServerException;
+			Date fecha, Concierto concierto) throws ServiceException;
 
 	public abstract  List<Concierto> findAllConciertos ();
 	

@@ -6,7 +6,8 @@ import com.escom.spring.entity.Genero;
 
 public interface AdmonGeneroService {
 
-	public abstract void addGenero(Genero genero);
+	public abstract Genero addGenero(Genero genero);
 	public abstract List<Genero> findAllGeneros ();
 	public abstract Genero getGeneroById (Integer id);
+	public abstract void deleteGenero(Genero genero);
 }

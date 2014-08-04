@@ -9,8 +9,10 @@ public interface AdmonBandaService {
 	
 	public abstract  List<Banda> findAllBandas ();
 	
-	public abstract void addBanda (Banda banda);
+	public abstract Banda addBanda (Banda banda);
 	
 	public abstract Banda findBandaById (Integer id);
+	
+	public abstract void deleteBanda (Banda banda);
 }
 	

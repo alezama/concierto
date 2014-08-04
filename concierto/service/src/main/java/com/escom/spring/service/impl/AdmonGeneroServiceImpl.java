@@ -20,8 +20,8 @@ public class AdmonGeneroServiceImpl implements AdmonGeneroService {
 	/* (non-Javadoc)
 	 * @see com.escom.spring.service.impl.AdmonGeneroService#addGenero(com.escom.spring.entity.Genero)
 	 */
-	public void addGenero (Genero genero) {
-		generoRepository.save(genero);
+	public Genero addGenero (Genero genero) {
+		return generoRepository.save(genero);
 	}
 	
 	public List<Genero> findAllGeneros () {
@@ -37,6 +37,11 @@ public class AdmonGeneroServiceImpl implements AdmonGeneroService {
 	
 	public Genero getGeneroById (Integer id) {
 		return generoRepository.findOne(id);
+	}
+
+	@Override
+	public void deleteGenero(Genero genero) {
+		generoRepository.delete(genero);
 	}
 	
 }

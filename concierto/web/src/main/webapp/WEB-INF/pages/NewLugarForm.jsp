@@ -17,7 +17,7 @@
 				<form:input path="direccion" type="text" required="true"/></li>
 				
 				<li><form:label path="capacidad">Capacidad</form:label>
-				<form:input path="capacidad" type="number" min="1" step="100" max="1000000" value="0" required="true"/></li> 
+				<form:input path="capacidad" type="number" min="101" step="1" max="1000000" value="101" required="true"/></li> 
 		
 				<li><form:label path="restriccionEdad">Restricción Edad</form:label></li>
 				<li><ul id="radioButtons">

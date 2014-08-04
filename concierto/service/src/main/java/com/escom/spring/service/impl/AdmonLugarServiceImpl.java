@@ -20,9 +20,9 @@ public class AdmonLugarServiceImpl implements AdmonLugarService {
 	/* (non-Javadoc)
 	 * @see com.escom.spring.service.impl.AdmonLugarService#addLugar(com.escom.spring.entity.Lugar)
 	 */
-	public void addLugar(Lugar lugar) {
+	public Lugar addLugar(Lugar lugar) {
 		
-		lugarRepository.save(lugar);
+		return lugarRepository.save(lugar);
 	}
 	
 	public List<Lugar> findAllLugares () {
@@ -38,6 +38,11 @@ public class AdmonLugarServiceImpl implements AdmonLugarService {
 	
 	public Lugar findLugarById (Integer id) {
 		return lugarRepository.findOne(id);
+	}
+
+	@Override
+	public void deleteLugar(Lugar lugar) {
+		lugarRepository.delete(lugar);
 	}
 	
 }
